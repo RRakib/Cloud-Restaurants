@@ -31,13 +31,13 @@ function display(response){
 }
 
 //Getting Data
-db.collection("cafes").get()
-    .then(response => {
-        console.log(response.docs)
-        response.docs.forEach(doc => {
-                display(doc);
-        }) 
-    })
+// db.collection("cafes").orderBy("name").get()
+//     .then(response => {
+//         console.log(response.docs)
+//         response.docs.forEach(doc => {
+//                 display(doc);
+//         }) 
+//     })
     
 
 
@@ -50,4 +50,20 @@ form.addEventListener("submit" , (e) => {
     })
     form.name.value = "";
     form.city.value = "";
+});
+
+
+
+//RealTime Listener
+db.collection("cafes").orderBy("name").onSnapshot((snap) => {
+    let change = snap.docChanges();
+    change.forEach(change => {
+        if(change.type == 'added'){
+            display(change.doc)
+        }
+        else if(change.type == "removed"){
+            let li = document.querySelector("[data-id= " + change.doc.id + "]");
+            cafeList.removeChild(li)
+        }
+    })
 })
