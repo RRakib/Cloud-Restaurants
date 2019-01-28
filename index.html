@@ -1,6 +1,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-firestore.js"></script>
     </head>
     <body>
 
@@ -14,6 +16,20 @@
 
         </div>
 
+
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAj3QzbXgXORD31ebx-8WZdtg-QXFHcHE0",
+                authDomain: "cloud-cafe-2480d.firebaseapp.com",
+                databaseURL: "https://cloud-cafe-2480d.firebaseio.com",
+                projectId: "cloud-cafe-2480d",
+                storageBucket: "cloud-cafe-2480d.appspot.com",
+                messagingSenderId: "515327784471"
+            };
+            firebase.initializeApp(config);
+            const db = firebase.firestore();
+        </script>
         <script src="app.js"></script>
     </body>
 </html>
